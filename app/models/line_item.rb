@@ -10,6 +10,6 @@ class LineItem < ApplicationRecord
     def suggest_other_product
         po = self.purchase_order
         purchased_item = self.stuffed_animal.present? ? self.stuffed_animal : self.accessory
-        suggested_item = po.similarly_purchased_item purchased_item
+        suggested_item = po.similarly_purchased_item(purchased_item)
     end
 end
