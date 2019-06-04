@@ -156,6 +156,9 @@ second_headers = build_a_buddy_spreadsheet.sheet("Purchase Orders").row(2)[2..-1
 
         # first create a purchase order with the first 2 cells information
         if row[0].present? and row[1].present?
+            # TECHNICAL DEBT: the time from the spreadsheet is coming over as a
+            # 5 digit number like 29431 so the time field type isn't taking the
+            # value. Going to punt on this and try to proceed with the assessment
             po = PurchaseOrder.create(date: row[0], time: row[1])
         end
 
